@@ -1,6 +1,6 @@
 <div align="center">
 
-# A-Von CashBook
+# SmartBursar
 
 **Offline-first financial management desktop app for Ugandan schools**
 
@@ -19,8 +19,7 @@
 
 ## Overview
 
-**A-Von CashBook** is a proprietary offline-first desktop application designed to streamline financial management for Ugandan educational institutions. Built for bursars, headteachers, and school proprietors, it replaces manual cashbooks and spreadsheets with a secure, auditable, and printable financial system.
-
+**SmartBursar** is a proprietary offline-first desktop application designed to streamline financial management for Ugandan educational institutions. Built for bursars, headteachers, and school proprietors, it replaces manual cashbooks and spreadsheets with a secure, auditable, and printable financial system.
 
 ---
 
@@ -105,6 +104,7 @@ The application is optimized for low-spec school computers to ensure smooth perf
 
 See [docs/specs](docs/specs) for full project specifications.
 
+---
 ---
 
 ## Project Structure
