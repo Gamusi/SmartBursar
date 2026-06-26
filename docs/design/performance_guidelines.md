@@ -1,4 +1,4 @@
-# A-Von CashBook — Performance and Compatibility Guidelines
+# SmartBursar — Performance and Compatibility Guidelines
 
 **For:** Frontend Developer  
 **Maintained by:** A-Von Computer Solutions  
