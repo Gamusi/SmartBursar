@@ -1,7 +1,6 @@
 # SmartBursar Python Dependencies
 
-# Core
-python>=3.11
+# Core dependencies
 
 # Database
 sqlalchemy>=2.0.0

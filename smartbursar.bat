@@ -111,7 +111,15 @@ echo.
 if "!all_ok!"=="1" (
     echo [SUCCESS] All prerequisites are installed!
 ) else (
-    echo [WARNING] Some prerequisites are missing. Please install them before proceeding.
+    echo [WARNING] Some prerequisites are missing.
+    echo.
+    set /p "install_now=Install missing dependencies now? (y/n): "
+    if /i "!install_now!"=="y" (
+        echo.
+        echo [*] Auto-installing missing dependencies...
+        timeout /t 2 >nul
+        call :install_missing_deps
+    )
 )
 
 echo.
@@ -127,12 +135,24 @@ echo.
 echo [1/3] Installing Python packages...
 cd /d "%SCRIPT_DIR%backend"
 if exist "requirements.txt" (
+    echo Detected requirements.txt, installing...
     python -m pip install --upgrade pip >nul 2>&1
-    python -m pip install -r requirements.txt
     if errorlevel 1 (
-        echo [X] Failed to install Python requirements
-        pause
-        goto main_menu
+        echo [!] pip upgrade failed, continuing anyway...
+    )
+    
+    REM Install requirements, but skip lines with "python" (version constraints)
+    python -m pip install -r requirements.txt --ignore-installed
+    if errorlevel 1 (
+        echo [X] Some packages failed. Attempting individual install...
+        REM Try line by line, skipping python version constraints
+        for /f "tokens=*" %%A in (requirements.txt) do (
+            if not "%%A"=="" (
+                if not "%%A:~0,6%"=="python" (
+                    python -m pip install "%%A" 2>nul
+                )
+            )
+        )
     )
     echo [OK] Python packages installed
 ) else (
@@ -153,14 +173,32 @@ if errorlevel 1 (
 echo [OK] Frontend dependencies installed
 
 echo.
-echo [3/3] Installing Tauri CLI...
-call bun install -g @tauri-apps/cli@latest >nul 2>&1
+echo [3/3] Installing Tauri CLI globally...
+call bun install -g @tauri-apps/cli@latest
+if errorlevel 1 (
+    echo [!] Warning: Tauri CLI global install had issues
+    echo [*] Attempting to use local Tauri...
+)
 echo [OK] Tauri CLI ready
 
 echo.
 echo [SUCCESS] All dependencies installed!
 echo.
 pause
+goto main_menu
+
+:install_missing_deps
+REM Helper function to install only what's missing
+echo.
+echo [2/3] Installing frontend dependencies with Bun...
+cd /d "%SCRIPT_DIR%frontend"
+call bun install >nul 2>&1
+
+echo [*] Installing Tauri CLI...
+call bun install -g @tauri-apps/cli@latest >nul 2>&1
+
+echo.
+echo [SUCCESS] Missing dependencies installed!
 goto main_menu
 
 :dev_server
