@@ -1,4 +1,4 @@
-# A-Von CashBook — Starting Guidelines
+# SmartBursar — Starting Guidelines
 
 This document outlines the different ways to start and run the application during development.
 
