@@ -217,13 +217,6 @@ echo.
 timeout /t 3 >nul
 
 cd /d "%SCRIPT_DIR%frontend"
-where bun >nul 2>&1
-if errorlevel 1 (
-    echo [X] Bun not found. Install Bun before running the dev server.
-    pause
-    goto main_menu
-)
-
 where tauri >nul 2>&1
 if errorlevel 1 (
     echo [X] Tauri CLI not found. Run option 2 to install dependencies first.
@@ -232,7 +225,7 @@ if errorlevel 1 (
 )
 
 echo [*] Launching development server...
-start "SmartBursar Dev Server" /wait cmd /c "bun tauri dev"
+start "SmartBursar Dev Server" /wait cmd /c "tauri dev"
 
 if errorlevel 1 (
     echo.
