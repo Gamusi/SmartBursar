@@ -36,7 +36,7 @@ export default function Login() {
         {/* Logo / Branding */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-syne font-extrabold text-text-primary tracking-tighter">
-            A-Von <span className="text-primary-light">CashBook</span>
+            SmartBursar
           </h1>
           <p className="text-text-muted mt-2 font-medium">School Financial Management System</p>
         </div>
@@ -90,3 +90,4 @@ export default function Login() {
     </div>
   )
 }
+

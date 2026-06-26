@@ -7,7 +7,7 @@
 
 ## The Context
 
-A-Von CashBook runs on school computers in Uganda. These are not developer machines. You will encounter Windows 10 machines with 2–4GB of RAM, spinning hard drives, and older processors. The app must feel fast on those machines, not just on yours.
+SmartBursar runs on school computers in Uganda. These are not developer machines. You will encounter Windows 10 machines with 2–4GB of RAM, spinning hard drives, and older processors. The app must feel fast on those machines, not just on yours.
 
 Every decision you make while building the frontend has a performance consequence. This document tells you what those decisions are and how to make the right ones from the start.
 
@@ -211,3 +211,4 @@ Build it, then measure it, then optimize what is actually slow.
 Do not guess at performance problems. Do not add complexity to solve a problem that does not exist yet. Follow the rules in this document from day one — they prevent the common problems. For anything beyond that, measure first.
 
 The Tauri developer tools include a performance profiler. Use it when something feels slow. Fix what the profiler shows, not what you imagine might be the problem.
+

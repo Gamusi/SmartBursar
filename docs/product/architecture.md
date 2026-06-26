@@ -1,6 +1,6 @@
-# A-Von CashBook — Complete Backend Architecture Reference
+# SmartBursar — Complete Backend Architecture Reference
 
-**Project:** A-Von CashBook  
+**Project:** SmartBursar  
 **Maintained by:** A-Von Computer Solutions  
 **For:** Backend Developer — reference from Task 4.3 through Tier 5  
 
@@ -626,3 +626,4 @@ These are not suggestions. They are enforced by the business logic.
 ---
 
 *Architecture maintained by A-Von Computer Solutions. Subject to revision as the project evolves.*
+

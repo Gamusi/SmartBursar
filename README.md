@@ -102,14 +102,14 @@ The application is optimized for low-spec school computers to ensure smooth perf
 
 > Setup instructions will be added once the development scaffold is ready.
 
-See [docs/specs](docs/specs) for full project specifications.
+See [docs/product/requirements.md](docs/product/requirements.md) for full product specifications.
 
 ---
 ---
 
 ## Project Structure
 ```
-avon-cashbook/
+smartbursar/
 ├── src-tauri/              # Tauri desktop shell (Rust)
 ├── frontend/               # React + TailwindCSS UI
 │   └── src/
@@ -135,7 +135,7 @@ avon-cashbook/
 │   │   └── utils/          # Helpers
 │   ├── migrations/         # Alembic migrations
 │   └── tests/              # Backend tests
-├── docs/                   # Specifications, design, screenshots
+├── docs/                   # Product, developer, backend, frontend, and reference documentation
 └── scripts/                # Build and utility scripts
 ```
 
@@ -179,3 +179,4 @@ avon-cashbook/
 Proprietary software. All rights reserved.  
 Copyright (c) 2025 A-Von Computer Solutions.  
 Unauthorized copying, distribution, or modification is strictly prohibited.
+

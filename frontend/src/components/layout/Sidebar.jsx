@@ -23,7 +23,7 @@ export function Sidebar() {
       {/* School Logo & Name */}
       <div className="px-6 mb-8">
         <h1 className="font-syne font-extrabold text-lg leading-tight tracking-tight">
-          A-Von <span className="text-primary-light">CashBook</span>
+          SmartBursar
         </h1>
         <p className="text-[10px] text-text-muted mt-0.5 truncate uppercase tracking-widest">{institutionName}</p>
       </div>
@@ -88,3 +88,4 @@ export function Sidebar() {
     </aside>
   )
 }
+
