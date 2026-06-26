@@ -34,3 +34,10 @@ If the answer is no, keep it out until it is necessary.
 - Core business rules must have tests.
 - Start with simple deterministic tests for the smallest units.
 - Do not over-test insignificant implementation details.
+
+## Development Server (HTTP-only for dev)
+
+- Dev frontend runs on **port 19173** (high, unusual port to avoid conflicts)
+- This port is **ONLY** for `tauri dev` + Vite hot reload
+- NOT part of production app runtime (which uses IPC/JSON-RPC over pipes)
+- In production, the app is IPC-only with no HTTP dependencies

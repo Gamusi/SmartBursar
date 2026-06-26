@@ -7,7 +7,7 @@
     "build": {
       "beforeDevCommand": "cd ../frontend && bun install && bun run dev",
       "beforeBuildCommand": "cd ../frontend && bun install && bun run build",
-      "devPath": "http://localhost:5173",
+      "devPath": "http://localhost:19173",
       "distDir": "../frontend/dist"
     },
     "bundle": {

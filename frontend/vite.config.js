@@ -22,7 +22,7 @@ export default defineConfig({
     }
   },
   server: {
-    port: 1420,
+    port: 19173,
     host: true,
     open: false,
     hmr: {
