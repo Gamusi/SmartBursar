@@ -1,0 +1,24 @@
+[package]
+name = "smartbursar"
+version = "0.1.0"
+description = "SmartBursar - School accounting and cash management"
+authors = ["SmartBursar Team"]
+edition = "2021"
+rust-version = "1.60"
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "=2.11.1", features = [] }
+tokio = { version = "1", features = ["full"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+codegen-units = 1
+lto = true

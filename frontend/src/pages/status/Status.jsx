@@ -17,7 +17,7 @@ export default function Status() {
       
       // Try to use Tauri IPC
       if (window.__TAURI__) {
-        const { invoke } = await import('@tauri-apps/api/tauri')
+        const { invoke } = await import('@tauri-apps/api/core')
         const response = await invoke('ipc_call', {
           method: 'status.check',
           params: {}
@@ -41,7 +41,7 @@ export default function Status() {
   const testPing = async () => {
     try {
       setLoading(true)
-      const { invoke } = await import('@tauri-apps/api/tauri')
+      const { invoke } = await import('@tauri-apps/api/core')
       const response = await invoke('ipc_call', {
         method: 'ping.echo',
         params: { message: 'Hello from React!' }

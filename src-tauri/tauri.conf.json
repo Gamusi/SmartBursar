@@ -1,19 +1,14 @@
 {
-  "package": {
-    "productName": "SmartBursar",
-    "version": "0.1.0"
+  "productName": "SmartBursar",
+  "version": "0.1.0",
+  "identifier": "com.smartbursar.app",
+  "build": {
+    "beforeDevCommand": "cd ../frontend && bun run dev",
+    "beforeBuildCommand": "cd ../frontend && bun run build",
+    "devUrl": "http://localhost:19173",
+    "frontendDist": "../frontend/dist"
   },
-  "tauri": {
-    "build": {
-      "beforeDevCommand": "cd ../frontend && bun install && bun run dev",
-      "beforeBuildCommand": "cd ../frontend && bun install && bun run build",
-      "devPath": "http://localhost:19173",
-      "distDir": "../frontend/dist"
-    },
-    "bundle": {
-      "active": true,
-      "identifier": "com.smartbursar.app"
-    },
+  "app": {
     "windows": [
       {
         "title": "SmartBursar",
@@ -26,5 +21,9 @@
     "security": {
       "csp": null
     }
+  },
+  "bundle": {
+    "active": true
   }
 }
+

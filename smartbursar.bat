@@ -16,7 +16,7 @@ echo ============================================================
 echo.
 echo 1. Check Prerequisites
 echo 2. Install Dependencies
-echo 3. Start Development Server (bun tauri dev)
+echo 3. Start Development Server
 echo 4. Build Production App
 echo 5. Run Backend Tests
 echo 6. Run Frontend Linter
@@ -219,26 +219,36 @@ if errorlevel 1 (
 )
 
 set "LOG_FILE=%SCRIPT_DIR%tauri-dev.log"
-echo [*] Launching development server...
+set "TEMP_BATCH=%SCRIPT_DIR%run-tauri.bat"
+
 echo [%date% %time%] Starting tauri dev > "%LOG_FILE%"
 
-start "SmartBursar Dev Server" /wait cmd /c "tauri dev 2>&1 >> "%LOG_FILE%""
+REM Create temporary batch to run tauri dev with full output capture
+(
+    echo @echo off
+    echo cd /d "%SCRIPT_DIR%"
+    echo tauri dev 2>&1
+) > "%TEMP_BATCH%"
+
+echo [*] Launching development server...
+call "%TEMP_BATCH%" >> "%LOG_FILE%" 2>&1
 
 if errorlevel 1 (
     echo.
     echo [X] The development server exited with an error.
-    echo [*] Error log saved to: tauri-dev.log
+    echo [*] Full error log saved to: tauri-dev.log
     echo.
-    echo Recent error output:
+    echo Error output:
     echo ============================================================
-    for /f "tokens=*" %%A in ('powershell -Command "Get-Content '%LOG_FILE%' -Tail 20"') do (
-        echo %%A
-    )
+    type "%LOG_FILE%"
     echo ============================================================
     echo.
+    del /q "%TEMP_BATCH%" >nul 2>&1
     pause
+    goto main_menu
 )
 
+del /q "%TEMP_BATCH%" >nul 2>&1
 goto main_menu
 
 :build_prod
