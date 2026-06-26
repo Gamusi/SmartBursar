@@ -10,9 +10,9 @@ cd /d "%SCRIPT_DIR%"
 :main_menu
 cls
 echo.
-echo ╔════════════════════════════════════════════════════════╗
-echo ║           SmartBursar Build & Development Menu          ║
-echo ╚════════════════════════════════════════════════════════╝
+echo ============================================================
+echo            SmartBursar Build ^& Development Menu
+echo ============================================================
 echo.
 echo 1. Check Prerequisites
 echo 2. Install Dependencies
@@ -338,11 +338,11 @@ goto main_menu
 :reset_all
 cls
 echo.
-echo ╔════════════════════════════════════════════════════════╗
-echo ║           [WARNING] RESET EVERYTHING?                  ║
-echo ║  This will delete node_modules, build cache, and .venv ║
-echo ║  You will need to reinstall all dependencies.          ║
-echo ╚════════════════════════════════════════════════════════╝
+echo ============================================================
+echo            [WARNING] RESET EVERYTHING?
+echo   This will delete node_modules, build cache, and .venv
+echo    You will need to reinstall all dependencies.
+echo ============================================================
 echo.
 
 set /p "confirm=Type 'yes' to confirm reset: "
