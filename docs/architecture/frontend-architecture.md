@@ -1,6 +1,6 @@
-# A-Von CashBook — Frontend Architecture and Design Reference
+# SmartBursar — Frontend Architecture and Design Reference
 
-**Project:** A-Von CashBook  
+**Project:** SmartBursar  
 **Maintained by:** A-Von Computer Solutions  
 **Stack:** React + TailwindCSS + Vite inside Tauri desktop shell  
 **For:** Frontend Developer reference — complete Phase 1 scope  
@@ -228,7 +228,7 @@ Three fonts are used across the application. All are loaded locally — bundled 
 
 **Geist** — primary UI font. Used for body text, labels, inputs, table content, and all general interface copy. Weights 400 and 500.
 
-**Syne** — display and heading font. Used for page titles, section headers, the app title, and any prominent UI element that needs visual weight. Weight 700 and 800. The app title "A-Von CashBook" uses Syne 800 with `letter-spacing: -0.5px` — the "CashBook" portion rendered in the primary accent color.
+**Syne** — display and heading font. Used for page titles, section headers, the app title, and any prominent UI element that needs visual weight. Weight 700 and 800. The app title "SmartBursar" uses Syne 800 with `letter-spacing: -0.5px` — the "CashBook" portion rendered in the primary accent color.
 
 **JetBrains Mono** — monospace font. Used for receipt numbers, student IDs, monetary amounts in tables, and any technical or code-style data.
 
@@ -244,7 +244,7 @@ Font size scale:
 App title implementation reference:
 ```jsx
 <h1 className="font-extrabold tracking-tight" style={{ fontFamily: 'Syne' }}>
-  A-Von <span style={{ color: 'var(--color-primary-light)' }}>CashBook</span>
+  Smart<span style={{ color: 'var(--color-primary-light)' }}>Bursar</span>
 </h1>
 ```
 
