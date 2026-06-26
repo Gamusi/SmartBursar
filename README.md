@@ -68,13 +68,13 @@ The application is optimized for low-spec school computers to ensure smooth perf
 
 | Layer | Technology |
 |---|---|
-| Desktop Shell | Tauri |
-| Backend | Python 3.11+ / FastAPI |
+| Desktop Shell | Tauri (Rust) |
+| Backend | Python 3.11+ |
 | Database | SQLite via SQLAlchemy |
 | Migrations | Alembic |
 | PDF Generation | ReportLab |
 | Excel Import | openpyxl |
-| IPC | Tauri sidecar (localhost FastAPI) |
+| IPC Transport | JSON-RPC over stdin/stdout pipes |
 
 ### Frontend
 
@@ -100,14 +100,21 @@ The application is optimized for low-spec school computers to ensure smooth perf
 
 ## Getting Started
 
-> Setup instructions will be added once the development scaffold is ready.
+**First time?** Start here: [DAY_1_START.md](DAY_1_START.md)
 
-See [docs/product/requirements.md](docs/product/requirements.md) for full product specifications.
+```bash
+cd frontend
+bun install
+bun tauri dev
+```
+
+Then navigate to `http://localhost:1420/status` to test the IPC connection.
+
+See [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) for the full roadmap and task list.
 
 ---
----
 
-## Project Structure
+## Architecture
 ```
 smartbursar/
 ├── src-tauri/              # Tauri desktop shell (Rust)

@@ -9,6 +9,7 @@ import { LoadingSpinner } from './components/ui/LoadingSpinner'
 
 // Lazy loaded pages
 const Login = lazy(() => import('./pages/auth/Login'))
+const Status = lazy(() => import('./pages/status/Status'))
 const Dashboard = lazy(() => import('./pages/dashboard/Dashboard'))
 const StudentList = lazy(() => import('./pages/students/StudentList'))
 const PaymentCollection = lazy(() => import('./pages/payments/PaymentCollection'))
@@ -38,6 +39,7 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/login" element={<Login />} />
+            <Route path="/status" element={<Status />} />
             
             {/* Protected Routes */}
             <Route element={<RequireAuth />}>

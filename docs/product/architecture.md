@@ -12,6 +12,8 @@ This is your north star for the entire backend. Every file you create, every tab
 
 You will not build everything at once. You will build it module by module, task by task. But knowing the full picture from the start means every decision you make is intentional, not accidental.
 
+For the runtime architecture and transport model, see [docs/product/runtime-architecture.md](runtime-architecture.md).
+
 ---
 
 ## File Structure

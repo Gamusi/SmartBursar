@@ -1,0 +1,28 @@
+# SmartBursar Python Dependencies
+
+# Core
+python>=3.11
+
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+
+# Async
+# (optional, for background workers)
+
+# Serialization
+# (json is standard library)
+
+# PDF Generation
+reportlab>=4.0.0
+
+# Excel
+openpyxl>=3.11.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Security (optional for auth)
+# bcrypt>=4.0.0
+# python-jose>=3.3.0
