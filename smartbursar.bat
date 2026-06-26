@@ -216,7 +216,7 @@ echo   4. Edit frontend code to test live reload
 echo.
 timeout /t 3 >nul
 
-cd /d "%SCRIPT_DIR%frontend"
+cd /d "%SCRIPT_DIR%"
 where tauri >nul 2>&1
 if errorlevel 1 (
     echo [X] Tauri CLI not found. Run option 2 to install dependencies first.
@@ -243,8 +243,15 @@ echo.
 echo This may take a few minutes. Building...
 echo.
 
-cd /d "%SCRIPT_DIR%frontend"
-call bun tauri build
+cd /d "%SCRIPT_DIR%"
+where tauri >nul 2>&1
+if errorlevel 1 (
+    echo [X] Tauri CLI not found. Run option 2 to install dependencies first.
+    pause
+    goto main_menu
+)
+
+call tauri build
 
 if errorlevel 1 (
     echo [X] Build failed
@@ -254,7 +261,7 @@ if errorlevel 1 (
 
 echo.
 echo [SUCCESS] Production build complete!
-echo Installer available at: frontend\src-tauri\target\release\bundle\
+echo Installer available at: src-tauri\target\release\bundle\
 echo.
 pause
 goto main_menu
