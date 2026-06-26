@@ -206,13 +206,7 @@ cls
 echo.
 echo [*] Starting Development Server...
 echo.
-echo Opening Tauri dev window with live reload...
-echo(
-echo To test the app:
-echo   1. Wait for the Tauri window to open
-echo   2. Navigate to Settings / Status page to test IPC connectivity
-echo   3. You should see "Connected" if Python sidecar is running
-echo   4. Edit frontend code to test live reload
+echo Launching Tauri with live reload...
 echo.
 timeout /t 3 >nul
 
@@ -224,12 +218,24 @@ if errorlevel 1 (
     goto main_menu
 )
 
+set "LOG_FILE=%SCRIPT_DIR%tauri-dev.log"
 echo [*] Launching development server...
-start "SmartBursar Dev Server" /wait cmd /c "tauri dev"
+echo [%date% %time%] Starting tauri dev > "%LOG_FILE%"
+
+start "SmartBursar Dev Server" /wait cmd /c "tauri dev 2>&1 >> "%LOG_FILE%""
 
 if errorlevel 1 (
     echo.
     echo [X] The development server exited with an error.
+    echo [*] Error log saved to: tauri-dev.log
+    echo.
+    echo Recent error output:
+    echo ============================================================
+    for /f "tokens=*" %%A in ('powershell -Command "Get-Content '%LOG_FILE%' -Tail 20"') do (
+        echo %%A
+    )
+    echo ============================================================
+    echo.
     pause
 )
 
