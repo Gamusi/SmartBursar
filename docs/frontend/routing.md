@@ -12,6 +12,8 @@
 - `/dashboard`
 - `/students`
 - `/students/:studentId`
+- `/staff` (staff directory)
+- `/staff-payments` (monthly payroll)
 - `/payments`
 - `/expenses`
 - `/cashbook`

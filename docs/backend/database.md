@@ -6,12 +6,21 @@ SmartBursar uses SQLite because it is simple, local, and reliable for desktop ap
 
 ## Core tables
 
-- `students`
-- `payments`
-- `expenses`
-- `terms`
-- `cashbook_entries`
-- `users` (if auth is required)
+The system schema consists of the following key tables:
+- `institution` (School configuration and profile)
+- `academic_years` (Academic years lifecycle)
+- `terms` (Academic terms lifecycle: open/closed/frozen statuses)
+- `classes` (Class streams and levels)
+- `students` (Student enrollment and profiles)
+- `fee_structures` (Billed fees per class/term/category)
+- `payments` (Receipted payment transactions)
+- `payment_plans` (Student installment and balance tracking)
+- `cashbook_entries` (Auto-generated finance ledger records)
+- `expenses` (Expenditure vouchers and workflow states)
+- `staff` (Staff profiles and baseline salaries)
+- `staff_payments` (Monthly payroll disbursements)
+- `users` (System users and role-based permissions)
+- `audit_log` (Append-only action audit trail)
 
 ## Principles
 

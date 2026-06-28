@@ -22,11 +22,11 @@ cd SmartBursar
 1. Open a terminal in `frontend`
 2. Install dependencies:
    ```powershell
-   npm install
+   bun install
    ```
 3. Start the frontend in mock mode:
    ```powershell
-   npm run dev
+   bun run dev
    ```
 
 ## Backend setup
@@ -55,8 +55,7 @@ If `app.main` does not exist yet, use the backend scaffolding available in `back
 When native integration is required, use Tauri dev mode:
 
 ```powershell
-cd frontend
-npm run tauri dev
+tauri dev
 ```
 
 Use this only after the frontend and backend flows are working in development.

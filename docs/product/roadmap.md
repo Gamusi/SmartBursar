@@ -7,12 +7,13 @@ This roadmap is organized around product value and gradual delivery. It is not a
 Goal: working school finance workflow with real persistence.
 
 - student registry
+- staff registry and basic monthly payroll
 - fee definition and term enrollment
 - payment collection with receipts
 - expense recording
 - basic cashbook entry creation
 - local SQLite persistence
-- frontend pages for students, payments, expenses, dashboard
+- frontend pages for students, staff, payments, expenses, dashboard
 
 ## Phase 2 — Cashbook and reports
 

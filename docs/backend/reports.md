@@ -6,10 +6,13 @@ Generate simple, useful reports for school finance operations.
 
 ## Reports to support
 
-- Daily collections
-- Student balance statements
-- Term summaries
-- Cashbook export
+- Daily collections (receipts breakdown)
+- Student balance statements (payment history ledgers)
+- Term summaries (term-wide financial indicators)
+- Cashbook export (running ledger of all cashflow)
+- Monthly payroll (staff salary payments summary)
+- Fee balances (all outstanding fees by class)
+- Income vs expenditure statement (profit/loss)
 
 ## Output formats
 

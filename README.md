@@ -1,6 +1,10 @@
 <div align="center">
 
-# SmartBursar
+<img src="frontend/src/assets/logo1-symbolprimary.png" alt="SmartBursar Logo Symbol" width="120" />
+<br />
+<img src="frontend/src/assets/logo2-wordmarkprimary.png" alt="SmartBursar Wordmark" width="340" />
+
+<br />
 
 **Offline-first financial management desktop app for Ugandan schools**
 
@@ -26,13 +30,14 @@
 ## Features
 
 - Student registry with class and term enrollment
+- Staff registry and monthly payroll disbursement workflow
 - User-defined fee structures per class per term
 - Payment collection with official receipt generation (`YYYY/T#/NNNN`)
 - Partial payments, payment plans, and fee adjustments (bursary/discounts)
 - Automatic cashbook population from every transaction
 - Expenditure management with approval workflow
 - Bank deposit recording
-- Financial reports: daily collections, fee balances, student statements, term summaries
+- Financial reports: daily collections, fee balances, student statements, term summaries, payroll
 - Term lifecycle management: open, close, freeze, carry-forward balances
 - Role-based access control (Super Admin, Headteacher, Bursar, Data Entry)
 - Full audit trail: every action logged with user, timestamp, old and new values
@@ -108,7 +113,7 @@ bun install
 bun tauri dev
 ```
 
-Then navigate to `http://localhost:1420/status` to test the IPC connection.
+Then navigate to `http://localhost:19173/status` to test the IPC connection.
 
 See [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) for the full roadmap and task list.
 
@@ -167,6 +172,7 @@ smartbursar/
 | Institution Setup | Planned |
 | Academic Structure | Planned |
 | Student Registry | Planned |
+| Staff & Payroll | Planned |
 | Fee Management | Planned |
 | Payment Collection | Planned |
 | Daily Collection Report | Planned |

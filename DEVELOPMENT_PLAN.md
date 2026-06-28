@@ -95,10 +95,22 @@ Goal: functional student registry, payment collection, expense recording, and ca
 - [ ] Wire to IPC method
 - [ ] Test
 
+### Checkpoint P1.6 — staff & payroll
+
+- [ ] Define SQLAlchemy Staff and StaffPayment models
+- [ ] Add Alembic migrations
+- [ ] Create StaffService with monthly payroll disbursement logic (enforce unique monthly payments)
+- [ ] Create `staff.create`, `staff.list`, `staff.update` IPC methods
+- [ ] Create `staffPayments.disburse`, `staffPayments.list` IPC methods
+- [ ] Add tests for payroll business rules
+- [ ] Build React pages: Staff Directory and Monthly Payroll
+- [ ] Wire to IPC methods
+- [ ] Test end-to-end: record staff payment, verify automatic cashbook debit entry
+
 **End of Phase 1 checklist:**
-- ✅ Students can be registered
+- ✅ Students and staff can be registered
 - ✅ Payments can be recorded and receipts generated
-- ✅ Expenses can be recorded
+- ✅ Expenses and staff payroll can be recorded
 - ✅ Cashbook entries are automatic
 - ✅ Basic dashboard shows status
 - ✅ All data persists to SQLite

@@ -22,6 +22,7 @@ Goal: Create a working finance workflow with real persistence and a usable front
 
 Deliverables:
 - Student registry CRUD
+- Staff registry CRUD and monthly payroll disbursement
 - Payment collection with receipt generation
 - Expense recording
 - Cashbook persistence in SQLite
