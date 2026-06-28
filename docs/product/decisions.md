@@ -6,12 +6,12 @@ This document records the architectural and product decisions that matter.
 
 - Efficiently Functional Simplicity
 - Every new addition must solve today's problem, remain understandable months later, and improve the user experience.
-- Build the product first, then let learning happen naturally through implementation.
+- Build the product first, validating the architecture and design decisions through incremental implementation.
 
-## Decision: no coursework language
+## Decision: pragmatic design focus
 
-The repository is a real product, not a training course.
-All developer guidance is written for a practical one-developer workflow.
+The repository prioritizes immediate operational utility over theoretical design patterns.
+All developer guidance is written for a practical, low-overhead development workflow.
 
 ## Decision: offline-first, local SQLite
 
@@ -55,5 +55,5 @@ This reduces SQLite contention and improves application responsiveness.
 
 ## Decision: documentation for future maintenance
 
-Docs should explain why and how, not teach exercises.
+Docs should explain the rationale behind decisions and system architecture.
 Keep architecture notes, decision records, and implementation context.

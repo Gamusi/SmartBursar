@@ -258,7 +258,7 @@ Notes:
 **Primary files:**
 - `docs/product/runtime-architecture.md` — how components communicate
 - `docs/product/decisions.md` — architectural decisions
-- `docs/developer/learning-roadmap.md` — high-level feature phases
+- `docs/developer/development-roadmap.md` — high-level feature phases
 - `docs/backend/api.md` — IPC method naming and contract
 
 **Development workflow:**

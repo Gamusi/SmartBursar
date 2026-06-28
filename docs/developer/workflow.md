@@ -13,9 +13,9 @@ This document explains how to move from idea to implementation to release.
 7. Merge
 8. Release Notes
 
-## Use the learning roadmap
+## Use the development roadmap
 
-The roadmap is a practical guide to the product. It exists to help you build the application, not to assign exercises.
+The roadmap is a practical guide to the product. It exists to help coordinate building the application and tracking milestones.
 
 ## Feature delivery
 

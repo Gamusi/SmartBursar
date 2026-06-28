@@ -100,7 +100,7 @@ The application is optimized for low-spec school computers to ensure smooth perf
 
 ## Getting Started
 
-**First time?** Start here: [DAY_1_START.md](DAY_1_START.md)
+**First time?** Start here: [Developer Setup](docs/developer/setup.md)
 
 ```bash
 cd frontend

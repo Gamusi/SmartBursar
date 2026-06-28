@@ -109,7 +109,7 @@ backend/
 │       └── (migration files go here)
 │
 ├── tests/
-│   ├── scratch/                        # Tier 1-3 learning scripts (not production code)
+│   ├── scratch/                        # Sandbox and prototyping scripts (not production code)
 │   ├── test_institution.py
 │   ├── test_academic.py
 │   ├── test_students.py
