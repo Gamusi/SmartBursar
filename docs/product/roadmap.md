@@ -1,4 +1,4 @@
-# SmartBursar Roadmap
+# SmartBursar Desktop: Roadmap
 
 This roadmap is organized around product value and gradual delivery. It is not a training syllabus.
 
