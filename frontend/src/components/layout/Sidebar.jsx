@@ -4,6 +4,7 @@ import { NAVIGATION } from '../../config/navigation'
 import { useAuthStore } from '../../store/authStore'
 import { useInstitutionStore } from '../../store/institutionStore'
 import { LogOut } from 'lucide-react'
+import { Logo } from '../ui/Logo'
 
 export function Sidebar() {
   const location = useLocation()
@@ -21,10 +22,8 @@ export function Sidebar() {
   return (
     <aside className="w-60 h-full bg-surface border-r border-border flex flex-col pt-4">
       {/* School Logo & Name */}
-      <div className="px-6 mb-8">
-        <h1 className="font-syne font-extrabold text-lg leading-tight tracking-tight">
-          SmartBursar
-        </h1>
+      <div className="px-6 mb-8 space-y-1">
+        <Logo size="md" />
         <p className="text-[10px] text-text-muted mt-0.5 truncate uppercase tracking-widest">{institutionName}</p>
       </div>
 
