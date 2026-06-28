@@ -36,6 +36,7 @@ backend/
 │   │   ├── cashbook.py                 # Cashbook entries
 │   │   ├── banking.py                  # Bank accounts and deposits
 │   │   ├── expense.py                  # Expenses and vouchers
+│   │   ├── staff.py                    # Staff records and payroll models
 │   │   ├── user.py                     # Users and roles
 │   │   └── audit.py                    # Audit log
 │   │
@@ -50,6 +51,7 @@ backend/
 │   │   ├── cashbook.py
 │   │   ├── banking.py
 │   │   ├── expense.py
+│   │   ├── staff.py
 │   │   ├── user.py
 │   │   └── audit.py
 │   │
@@ -64,6 +66,7 @@ backend/
 │   │   ├── cashbook.py
 │   │   ├── banking.py
 │   │   ├── expenses.py
+│   │   ├── staff.py
 │   │   ├── reports.py
 │   │   ├── users.py
 │   │   └── audit.py
@@ -79,6 +82,7 @@ backend/
 │   │   ├── cashbook_service.py
 │   │   ├── banking_service.py
 │   │   ├── expense_service.py
+│   │   ├── staff_service.py
 │   │   ├── receipt_service.py
 │   │   ├── report_service.py
 │   │   ├── user_service.py
@@ -88,6 +92,7 @@ backend/
 │   │   ├── __init__.py
 │   │   ├── receipt.py                  # Official receipt PDF
 │   │   ├── voucher.py                  # Expense voucher PDF
+│   │   ├── payroll.py                  # Monthly staff payroll PDF
 │   │   ├── daily_collection.py         # Daily collection report PDF
 │   │   ├── student_statement.py        # Per-student statement PDF
 │   │   ├── cashbook_report.py          # Cashbook PDF
@@ -117,6 +122,7 @@ backend/
 │   ├── test_payments.py
 │   ├── test_cashbook.py
 │   ├── test_expenses.py
+│   ├── test_staff.py
 │   ├── test_reports.py
 │   └── test_users.py
 │
@@ -332,9 +338,9 @@ Auto-populated. Never manually inserted or edited by users.
 | Column | Type | Notes |
 |---|---|---|
 | id | INTEGER | Primary key |
-| entry_type | VARCHAR | "receipt", "expense", "deposit", "void_reversal" |
+| entry_type | VARCHAR | "receipt", "expense", "deposit", "salary", "void_reversal" |
 | reference_id | INTEGER | ID of the source record |
-| reference_table | VARCHAR | "payments", "expenses", "bank_deposits" |
+| reference_table | VARCHAR | "payments", "expenses", "bank_deposits", "staff_payments" |
 | description | VARCHAR | Auto-generated description |
 | debit | DECIMAL | Money in |
 | credit | DECIMAL | Money out |
@@ -408,6 +414,56 @@ Auto-populated. Never manually inserted or edited by users.
 
 ---
 
+### staff
+
+Defines staff members employed by the institution (teachers, support, admin).
+
+| Column | Type | Notes |
+|---|---|---|
+| id | INTEGER | Primary key |
+| staff_id | VARCHAR | School-defined or auto-generated, unique |
+| first_name | VARCHAR | |
+| last_name | VARCHAR | |
+| role | VARCHAR | e.g. "teacher", "administration", "support" |
+| phone | VARCHAR | |
+| email | VARCHAR | Optional |
+| nira_nin | VARCHAR | Ugandan National ID NIN, optional |
+| monthly_salary | DECIMAL | Basic monthly salary rate |
+| status | VARCHAR | "active", "suspended", "terminated" |
+| created_at | DATETIME | Auto |
+| updated_at | DATETIME | Auto |
+
+---
+
+### staff_payments
+
+Records recurring monthly salary/payroll disbursements to staff.
+
+| Column | Type | Notes |
+|---|---|---|
+| id | INTEGER | Primary key |
+| staff_id | INTEGER | FK to staff |
+| term_id | INTEGER | FK to terms |
+| payment_month | INTEGER | Month number (1–12) |
+| payment_year | INTEGER | e.g. 2026 |
+| base_amount | DECIMAL | Basic salary rate at the time of payment |
+| allowances | DECIMAL | Additional allowances paid |
+| deductions | DECIMAL | Taxes or advance salary cuts deducted |
+| net_amount | DECIMAL | Net paid (base + allowances - deductions) |
+| payment_date | DATE | |
+| channel | VARCHAR | "cash", "bank_transfer", "mobile_money" |
+| channel_reference | VARCHAR | Transaction ID, slip number, etc. |
+| status | VARCHAR | "draft", "approved", "paid" |
+| initiated_by | INTEGER | FK to users |
+| initiated_at | DATETIME | |
+| approved_by | INTEGER | FK to users, nullable |
+| approved_at | DATETIME | |
+| paid_at | DATETIME | |
+| created_at | DATETIME | Auto |
+| updated_at | DATETIME | Auto |
+
+---
+
 ### users
 
 | Column | Type | Notes |
@@ -461,6 +517,7 @@ All routes are prefixed with `/api/v1/`.
 |---|---|---|
 | GET | `/academic-years` | List all academic years |
 | POST | `/academic-years` | Create academic year |
+| POST | `/academic-years/{id}/generate-terms` | Generate default terms based on levels (Primary, Secondary, Tertiary) |
 | GET | `/terms` | List terms, filter by year |
 | POST | `/terms` | Create term |
 | PUT | `/terms/{id}/open` | Open a term |
@@ -538,6 +595,18 @@ All routes are prefixed with `/api/v1/`.
 | PUT | `/expenses/{id}/reject` | Reject expense |
 | PUT | `/expenses/{id}/mark-paid` | Mark as paid |
 
+### Staff & Payroll
+| Method | Route | Description |
+|---|---|---|
+| GET | `/staff` | List all staff members |
+| POST | `/staff` | Add a new staff member |
+| GET | `/staff/{id}` | Get staff member details |
+| PUT | `/staff/{id}` | Update staff details |
+| GET | `/staff-payments` | List monthly staff payments |
+| POST | `/staff-payments` | Initiate monthly payroll payment |
+| PUT | `/staff-payments/{id}/approve` | Approve staff payment |
+| PUT | `/staff-payments/{id}/mark-paid` | Mark staff payment as paid (creates cashbook entry) |
+
 ### Reports
 | Method | Route | Description |
 |---|---|---|
@@ -548,6 +617,7 @@ All routes are prefixed with `/api/v1/`.
 | GET | `/reports/income-expenditure` | Income vs expenditure |
 | GET | `/reports/term-summary` | Term financial summary |
 | GET | `/reports/outstanding-fees` | Outstanding fees list |
+| GET | `/reports/payroll` | Monthly payroll report |
 
 All report endpoints accept `?format=pdf` to return a PDF file instead of JSON.
 
@@ -604,7 +674,11 @@ Expense initiated → submitted → approved → paid
         |
 Expense Cashbook Entry auto-created (credit)
         |
-Reports generated from cashbook + payments + expenses
+Staff payroll initiated → approved → paid
+        |
+Staff Payment Cashbook Entry auto-created (credit)
+        |
+Reports generated from cashbook + payments + expenses + payroll
         |
 Term closed → balances frozen → carry-forward calculated
         |
@@ -624,6 +698,7 @@ These are not suggestions. They are enforced by the business logic.
 - Closing a term freezes all its transactions. No payments or expenses can be recorded against a frozen or closed term.
 - A student soft-deleted (status changed) is never hard-deleted. Their history is permanent.
 - Passwords are always stored hashed. Never plain text. Never logged.
+- A staff member can only receive one payment per month/year combination to prevent double salary disbursements.
 
 ---
 
